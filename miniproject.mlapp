@@ -1,0 +1,261 @@
+classdef Mini_Project_1_Dropdown_Menu < matlab.apps.AppBase
+
+    % Properties that correspond to app components
+    properties (Access = public)
+        UIFigure                 matlab.ui.Figure
+        HzLabel                  matlab.ui.control.Label
+        VLabel                   matlab.ui.control.Label
+        unitDropDown             matlab.ui.control.DropDown
+        TimeDivKnob              matlab.ui.control.Knob
+        TimeDivKnobLabel         matlab.ui.control.Label
+        FrequencyEditField       matlab.ui.control.NumericEditField
+        FrequencyEditFieldLabel  matlab.ui.control.Label
+        AmplitudeEditField       matlab.ui.control.NumericEditField
+        AmplitudeEditFieldLabel  matlab.ui.control.Label
+        OffsetKnob               matlab.ui.control.Knob
+        OffsetKnobLabel          matlab.ui.control.Label
+        WaveformDropDown         matlab.ui.control.DropDown
+        WaveformDropDownLabel    matlab.ui.control.Label
+        Lamp                     matlab.ui.control.Lamp
+        Switch                   matlab.ui.control.Switch
+        UIAxes                   matlab.ui.control.UIAxes
+    end
+
+    % Callbacks that handle component events
+    methods (Access = private)
+
+        % Value changed function: AmplitudeEditField, 
+        % FrequencyEditField, OffsetKnob, Switch, TimeDivKnob, 
+        % WaveformDropDown
+        function SwitchValueChanged(app, event)
+            syms t A f real;
+            A = app.AmplitudeEditField.Value;
+            f = app.FrequencyEditField.Value;
+            timediv = app.TimeDivKnob.Value;
+            vx = app.WaveformDropDown.Value;
+            offset = app.OffsetKnob.Value;
+            unit = app.unitDropDown.Value;
+            value = app.Switch.Value;
+
+            switch value
+                case 'Off'
+                    app.Lamp.Color = [1 0 0];
+                    cla(app.UIAxes);
+                case 'On'
+                    app.Lamp.Color = [0 1 0];
+            end
+            
+            switch unit
+                case 's'
+                    timediv = timediv/10000;
+                case 'ms'
+                    timediv = timediv*(10^-3)/10000;
+                case 'us'
+                    timediv = timediv*(10^-6)/10000;
+            end
+            
+            if strcmp(value,'On')
+                switch vx
+                    case 'Sine'
+                  
+                        T = 1 / f ;
+                        N = 1000;
+                        omega = 2*pi*f;
+                        t  = ((0:N)/T)*timediv;
+                        y = A * sin(omega*t);
+                        plot( app.UIAxes, t , y + offset );
+                    
+                    case 'Sawtooth'
+                        
+                        T = 1 / f;
+                        N = 1000;
+                        omega = 2*pi*f;
+                        t  = ((0:N)/T)*timediv;
+                        y = 1/2 ;
+                        k = 200 ;
+                        for k = 1 : 1 : k
+        
+                            y = y + A *( -sin (k * omega * t) / ( k * pi ));
+        
+                        end
+                        plot (app.UIAxes , t , y + offset );
+                        
+                    case 'Triangular'
+                        
+                        T = 1 / f;
+                        N = 1000;
+                        omega = 2*pi*f;
+                        t  = ((0:N)/T )*timediv;
+                        y = 0 ;
+                        k = 200 ;
+                        
+                        for k = 1 : 2 : k
+        
+                            y = y  + A * (-4 / ( ( pi*k ) ^ 2 ) * (cos( k *omega* t)));
+        
+                        end
+                        plot (app.UIAxes , t , y*2 + offset );
+                    
+                    case 'Square'
+                        
+                        T = 1 / f ;
+                        N = 1000;
+                        omega = 2*pi*f;
+                        t  = ((0:N)/T)*timediv;
+                        y = 0 ;
+                        k = 20000 ;
+                        
+                        for k = 1 : 2 : k
+        
+                            y = y  + ( ( A * 4 / pi ) * sin( k * omega *t ) / k );
+                            
+                        end
+                        plot (app.UIAxes , t , y + offset );
+                end
+            end
+            
+        end
+    end
+
+    % Component initialization
+    methods (Access = private)
+
+        % Create UIFigure and components
+        function createComponents(app)
+
+            % Create UIFigure and hide until all components are created
+            app.UIFigure = uifigure('Visible', 'off');
+            app.UIFigure.Color = [0.8 0.8 0.8];
+            app.UIFigure.Position = [100 100 837 407];
+            app.UIFigure.Name = 'MATLAB App';
+
+            % Create UIAxes
+            app.UIAxes = uiaxes(app.UIFigure);
+            title(app.UIAxes, 'Function generator')
+            xlabel(app.UIAxes, 'Time/div')
+            ylabel(app.UIAxes, 'Volt/div')
+            zlabel(app.UIAxes, 'Z')
+            app.UIAxes.XGrid = 'on';
+            app.UIAxes.YGrid = 'on';
+            app.UIAxes.Position = [9 13 487 395];
+
+            % Create Switch
+            app.Switch = uiswitch(app.UIFigure, 'slider');
+            app.Switch.ValueChangedFcn = createCallbackFcn(app, @SwitchValueChanged, true);
+            app.Switch.Position = [624 349 77 34];
+
+            % Create Lamp
+            app.Lamp = uilamp(app.UIFigure);
+            app.Lamp.Position = [736 353 27 27];
+            app.Lamp.Color = [1 0 0];
+
+            % Create WaveformDropDownLabel
+            app.WaveformDropDownLabel = uilabel(app.UIFigure);
+            app.WaveformDropDownLabel.HorizontalAlignment = 'right';
+            app.WaveformDropDownLabel.FontSize = 16;
+            app.WaveformDropDownLabel.Position = [574 306 78 22];
+            app.WaveformDropDownLabel.Text = 'Waveform';
+
+            % Create WaveformDropDown
+            app.WaveformDropDown = uidropdown(app.UIFigure);
+            app.WaveformDropDown.Items = {'Sine', 'Square', 'Triangular', 'Sawtooth', ''};
+            app.WaveformDropDown.ValueChangedFcn = createCallbackFcn(app, @SwitchValueChanged, true);
+            app.WaveformDropDown.FontSize = 16;
+            app.WaveformDropDown.Position = [667 306 108 22];
+            app.WaveformDropDown.Value = 'Sine';
+
+            % Create OffsetKnobLabel
+            app.OffsetKnobLabel = uilabel(app.UIFigure);
+            app.OffsetKnobLabel.HorizontalAlignment = 'center';
+            app.OffsetKnobLabel.Position = [735 82 37 22];
+            app.OffsetKnobLabel.Text = 'Offset';
+
+            % Create OffsetKnob
+            app.OffsetKnob = uiknob(app.UIFigure, 'continuous');
+            app.OffsetKnob.Limits = [-5 5];
+            app.OffsetKnob.ValueChangedFcn = createCallbackFcn(app, @SwitchValueChanged, true);
+            app.OffsetKnob.Position = [721 113 60 60];
+
+            % Create AmplitudeEditFieldLabel
+            app.AmplitudeEditFieldLabel = uilabel(app.UIFigure);
+            app.AmplitudeEditFieldLabel.HorizontalAlignment = 'right';
+            app.AmplitudeEditFieldLabel.Position = [546 260 59 22];
+            app.AmplitudeEditFieldLabel.Text = 'Amplitude';
+
+            % Create AmplitudeEditField
+            app.AmplitudeEditField = uieditfield(app.UIFigure, 'numeric');
+            app.AmplitudeEditField.ValueChangedFcn = createCallbackFcn(app, @SwitchValueChanged, true);
+            app.AmplitudeEditField.Position = [525 239 100 22];
+
+            % Create FrequencyEditFieldLabel
+            app.FrequencyEditFieldLabel = uilabel(app.UIFigure);
+            app.FrequencyEditFieldLabel.HorizontalAlignment = 'right';
+            app.FrequencyEditFieldLabel.Position = [710 260 62 22];
+            app.FrequencyEditFieldLabel.Text = 'Frequency';
+
+            % Create FrequencyEditField
+            app.FrequencyEditField = uieditfield(app.UIFigure, 'numeric');
+            app.FrequencyEditField.ValueChangedFcn = createCallbackFcn(app, @SwitchValueChanged, true);
+            app.FrequencyEditField.Position = [690 239 100 22];
+
+            % Create TimeDivKnobLabel
+            app.TimeDivKnobLabel = uilabel(app.UIFigure);
+            app.TimeDivKnobLabel.HorizontalAlignment = 'center';
+            app.TimeDivKnobLabel.Position = [549 82 52 22];
+            app.TimeDivKnobLabel.Text = 'Time/Div';
+
+            % Create TimeDivKnob
+            app.TimeDivKnob = uiknob(app.UIFigure, 'continuous');
+            app.TimeDivKnob.Limits = [1 100];
+            app.TimeDivKnob.MajorTicks = [1 10 20 30 40 50 60 70 80 90 100];
+            app.TimeDivKnob.ValueChangedFcn = createCallbackFcn(app, @SwitchValueChanged, true);
+            app.TimeDivKnob.MinorTicks = [1 5 10 15 20 25 30 35 40 45 50 55 60 65 70 75 80 85 90 95 100];
+            app.TimeDivKnob.Position = [548 119 55 55];
+            app.TimeDivKnob.Value = 1;
+
+            % Create unitDropDown
+            app.unitDropDown = uidropdown(app.UIFigure);
+            app.unitDropDown.Items = {'s', 'ms', 'us'};
+            app.unitDropDown.Position = [635 132 49 22];
+            app.unitDropDown.Value = 's';
+
+            % Create VLabel
+            app.VLabel = uilabel(app.UIFigure);
+            app.VLabel.Position = [634 239 25 22];
+            app.VLabel.Text = 'V';
+
+            % Create HzLabel
+            app.HzLabel = uilabel(app.UIFigure);
+            app.HzLabel.Position = [798 239 25 22];
+            app.HzLabel.Text = 'Hz';
+
+            % Show the figure after all components are created
+            app.UIFigure.Visible = 'on';
+        end
+    end
+
+    % App creation and deletion
+    methods (Access = public)
+
+        % Construct app
+        function app = Mini_Project_1_Dropdown_Menu
+
+            % Create UIFigure and components
+            createComponents(app)
+
+            % Register the app with App Designer
+            registerApp(app, app.UIFigure)
+
+            if nargout == 0
+                clear app
+            end
+        end
+
+        % Code that executes before app deletion
+        function delete(app)
+
+            % Delete UIFigure when app is deleted
+            delete(app.UIFigure)
+        end
+    end
+end
