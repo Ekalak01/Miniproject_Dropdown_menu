@@ -3,6 +3,7 @@ classdef Mini_Project_1_Dropdown_Menu < matlab.apps.AppBase
     % Properties that correspond to app components
     properties (Access = public)
         UIFigure                 matlab.ui.Figure
+        ClearButton              matlab.ui.control.Button
         HzLabel                  matlab.ui.control.Label
         VLabel                   matlab.ui.control.Label
         unitDropDown             matlab.ui.control.DropDown
@@ -26,7 +27,7 @@ classdef Mini_Project_1_Dropdown_Menu < matlab.apps.AppBase
 
         % Value changed function: AmplitudeEditField, 
         % FrequencyEditField, OffsetKnob, Switch, TimeDivKnob, 
-        % WaveformDropDown
+        % WaveformDropDown, unitDropDown
         function SwitchValueChanged(app, event)
             syms t A f real;
             A = app.AmplitudeEditField.Value;
@@ -64,22 +65,24 @@ classdef Mini_Project_1_Dropdown_Menu < matlab.apps.AppBase
                         t  = ((0:N)/T)*timediv;
                         y = A * sin(omega*t);
                         plot( app.UIAxes, t , y + offset );
-                    
-                    case 'Sawtooth'
                         
-                        T = 1 / f;
+                        
+                    case 'Square'
+                        
+                        T = 1 / f ;
                         N = 1000;
                         omega = 2*pi*f;
                         t  = ((0:N)/T)*timediv;
-                        y = 1/2 ;
-                        k = 200 ;
-                        for k = 1 : 1 : k
+                        y = 0 ;
+                        k = 20000 ;
+                        
+                        for k = 1 : 2 : k
         
-                            y = y + A *( -sin (k * omega * t) / ( k * pi ));
-        
+                            y = y  + ( ( A * 4 / pi ) * sin( k * omega *t ) / k );
+                            
                         end
                         plot (app.UIAxes , t , y + offset );
-                        
+                    
                     case 'Triangular'
                         
                         T = 1 / f;
@@ -96,23 +99,38 @@ classdef Mini_Project_1_Dropdown_Menu < matlab.apps.AppBase
                         end
                         plot (app.UIAxes , t , y*2 + offset );
                     
-                    case 'Square'
+                    case 'Sawtooth'
                         
-                        T = 1 / f ;
+                        T = 1 / f;
                         N = 1000;
                         omega = 2*pi*f;
                         t  = ((0:N)/T)*timediv;
-                        y = 0 ;
-                        k = 20000 ;
-                        
-                        for k = 1 : 2 : k
+                        y = 1/2 ;
+                        k = 200 ;
+                        for k = 1 : 1 : k
         
-                            y = y  + ( ( A * 4 / pi ) * sin( k * omega *t ) / k );
-                            
+                            y = y + A *( -sin (k * omega * t) / ( k * pi ));
+        
                         end
                         plot (app.UIAxes , t , y + offset );
+                        
+                    
+                    
+                    
                 end
             end
+            
+        end
+
+        % Button pushed function: ClearButton
+        function ClearButtonPushed(app, event)
+            app.AmplitudeEditField.Value = 0;
+            app.FrequencyEditField.Value = 0;
+            app.TimeDivKnob.Value = 1;
+            app.WaveformDropDown.Value = 'Sine';
+            app.OffsetKnob.Value = 0;
+            app.unitDropDown.Value = 's';
+            cla(app.UIAxes);
             
         end
     end
@@ -216,6 +234,7 @@ classdef Mini_Project_1_Dropdown_Menu < matlab.apps.AppBase
             % Create unitDropDown
             app.unitDropDown = uidropdown(app.UIFigure);
             app.unitDropDown.Items = {'s', 'ms', 'us'};
+            app.unitDropDown.ValueChangedFcn = createCallbackFcn(app, @SwitchValueChanged, true);
             app.unitDropDown.Position = [635 132 49 22];
             app.unitDropDown.Value = 's';
 
@@ -228,6 +247,12 @@ classdef Mini_Project_1_Dropdown_Menu < matlab.apps.AppBase
             app.HzLabel = uilabel(app.UIFigure);
             app.HzLabel.Position = [798 239 25 22];
             app.HzLabel.Text = 'Hz';
+
+            % Create ClearButton
+            app.ClearButton = uibutton(app.UIFigure, 'push');
+            app.ClearButton.ButtonPushedFcn = createCallbackFcn(app, @ClearButtonPushed, true);
+            app.ClearButton.Position = [637 29 54 22];
+            app.ClearButton.Text = 'Clear';
 
             % Show the figure after all components are created
             app.UIFigure.Visible = 'on';
