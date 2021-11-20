@@ -6,7 +6,8 @@
 
 > ผู้ใช้สามารถกดปุ่ม clear เพื่อล้างค่าพารามิเตอร์และกราฟทั้งหมดได้
 
-![image](https://user-images.githubusercontent.com/20890109/142723342-1ea4fd00-ffc6-47dd-80f0-862fa0846b95.png)
+![image](https://user-images.githubusercontent.com/20890109/142723348-59f32214-ed48-4b98-b083-52038696df58.png)
+
 
                     
 โดยการที่จะสร้างสมการ X(t) ซึ่งจะสามารถหาสมการได้จากการ นำความรู้เรื่อง Fourier Series มาใช้เพื่อหาผลลัพธ์ของสมการ
