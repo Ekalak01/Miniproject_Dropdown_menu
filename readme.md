@@ -13,7 +13,7 @@
 
 ![image](https://user-images.githubusercontent.com/20890109/142723888-7e077783-f1de-46bd-b246-5d01d505baaa.png)
 
-> ผู้ใช้สามารถกดปุ่ม clear เพื่อล้างค่าพารามิเตอร์และกราฟทั้งหมดได้
+> ผู้ใช้สามารถกดปุ่ม Clear เพื่อล้างค่าพารามิเตอร์และกราฟทั้งหมดได้
 
 ![image](https://user-images.githubusercontent.com/20890109/142723597-d02912ad-9f1d-44da-85e4-7d5c79ea4168.png)
 
