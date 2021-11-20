@@ -24,26 +24,26 @@
 
 > ซึ่งผลลัพธ์จากการคำนวนได้ดังนี้
 
-> ### - Sine Wave 
+> ### -Sine Wave 
 
 ![image](https://user-images.githubusercontent.com/87509688/142724034-03b2b845-06f2-4784-830c-c1559a821227.png)
 ![image](https://user-images.githubusercontent.com/87509688/142723130-4e66d9fc-8d7b-475e-bf3b-d7d59806023e.png)
 
-> ### - Square Wave 
+> ### -Square Wave 
 
 ![image](https://user-images.githubusercontent.com/87509688/142724061-20ee9df7-4242-46bb-ba46-ff2cde2cc6a3.png)
 ![image](https://user-images.githubusercontent.com/87509688/142724067-6ea8fe67-c537-43ad-b7e5-caeff48bad9d.png)
 ![image](https://user-images.githubusercontent.com/87509688/142723101-d6e6d390-d556-4382-889b-2f965bb8ffe3.png)
 
 
-> ### - Traingular Wave 
+> ### -Traingular Wave 
 
 ![image](https://user-images.githubusercontent.com/87509688/142724088-f59a1846-c156-4096-a7e2-0789e8809793.png)
 ![image](https://user-images.githubusercontent.com/87509688/142724103-f2d7b9a4-4c00-435d-af30-0b8c2aa89603.png)
 ![image](https://user-images.githubusercontent.com/87509688/142723110-35e31ac2-5bb6-4105-bfd9-4963389dcf91.png)
 
 
-> ### - Sawtooth Wave 
+> ### -Sawtooth Wave 
 
 ![image](https://user-images.githubusercontent.com/87509688/142724128-4f2da470-4402-4eff-aaf7-a402dbcbe8ae.png)
 ![image](https://user-images.githubusercontent.com/87509688/142724132-bac22745-2e2d-4a24-a568-11509b752d48.png)
