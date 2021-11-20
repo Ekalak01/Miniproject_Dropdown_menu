@@ -38,15 +38,15 @@
 
 > ### Traingular Wave 
 
-![image](https://user-images.githubusercontent.com/87509688/142722873-7a1c9bb8-e440-487b-9aa3-a17832865506.png)
-![image](https://user-images.githubusercontent.com/87509688/142722853-79b1a16d-14b7-4c2f-b0c7-01ddd20bf207.png)
+![image](https://user-images.githubusercontent.com/87509688/142724088-f59a1846-c156-4096-a7e2-0789e8809793.png)
+![image](https://user-images.githubusercontent.com/87509688/142724103-f2d7b9a4-4c00-435d-af30-0b8c2aa89603.png)
 ![image](https://user-images.githubusercontent.com/87509688/142723110-35e31ac2-5bb6-4105-bfd9-4963389dcf91.png)
 
 
 > ### Sawtooth Wave 
 
-![image](https://user-images.githubusercontent.com/87509688/142722770-6f5c3fb9-3744-48cb-8927-80637c379a41.png)
-![image](https://user-images.githubusercontent.com/87509688/142722784-82a2b41e-bd67-4217-a4da-5f5a7f3e4a0a.png)
+![image](https://user-images.githubusercontent.com/87509688/142724128-4f2da470-4402-4eff-aaf7-a402dbcbe8ae.png)
+![image](https://user-images.githubusercontent.com/87509688/142724132-bac22745-2e2d-4a24-a568-11509b752d48.png)
 ![image](https://user-images.githubusercontent.com/87509688/142723115-6a31d6e0-8ddd-4a6e-b275-954a6a2a84de.png)
 
 > #### จากการกล่าวถึงโปรเจคข้างต้น ซึ่งผู้อ่านสามารถ โหลดไฟล์ GUI MATLAB ได้ที่ 
