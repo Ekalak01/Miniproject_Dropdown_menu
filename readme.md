@@ -6,7 +6,8 @@
 
 > ผู้ใช้สามารถกดปุ่ม clear เพื่อล้างค่าพารามิเตอร์และกราฟทั้งหมดได้
 
-![image](https://user-images.githubusercontent.com/20890109/142723348-59f32214-ed48-4b98-b083-52038696df58.png)
+![image](https://user-images.githubusercontent.com/20890109/142723579-3587eca0-8d4b-443c-975b-45bd349b0530.png)
+
 
 
                     
