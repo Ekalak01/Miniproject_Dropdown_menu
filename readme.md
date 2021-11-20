@@ -26,13 +26,13 @@
 
 > ### Sine Wave 
 
-![image](https://user-images.githubusercontent.com/87509688/142722805-31e417de-f455-4076-bc87-b18d74d47d1e.png)
+![image](https://user-images.githubusercontent.com/87509688/142724034-03b2b845-06f2-4784-830c-c1559a821227.png)
 ![image](https://user-images.githubusercontent.com/87509688/142723130-4e66d9fc-8d7b-475e-bf3b-d7d59806023e.png)
 
 > ### Square Wave 
 
-![image](https://user-images.githubusercontent.com/87509688/142722634-1ed24a6e-5653-413a-86df-800b0bb64045.png)
-![image](https://user-images.githubusercontent.com/87509688/142722714-e88b7f38-a460-44a7-9b0d-4ba32d51087c.png)
+![image](https://user-images.githubusercontent.com/87509688/142724061-20ee9df7-4242-46bb-ba46-ff2cde2cc6a3.png)
+![image](https://user-images.githubusercontent.com/87509688/142724067-6ea8fe67-c537-43ad-b7e5-caeff48bad9d.png)
 ![image](https://user-images.githubusercontent.com/87509688/142723101-d6e6d390-d556-4382-889b-2f965bb8ffe3.png)
 
 
