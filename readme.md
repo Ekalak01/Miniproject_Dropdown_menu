@@ -7,7 +7,7 @@
 
 > ใช้สามารถปรับค่า Time/Div และเลือกหน่วยได้จาก Menu Dropdown โดยจะมี s, ms และ us โดยใช้เพื่อเลื่อนตำแหน่งของ กราฟฝั่ง Time/div เพื่อให้เห็นรูปกราฟชัดมากขึ้น
 
-![image](https://user-images.githubusercontent.com/20890109/142723768-e6417eb3-1faf-4f3d-aedf-8933c50a0ad4.png)
+![image](https://user-images.githubusercontent.com/20890109/142723856-78e01166-2f1b-4e54-8c35-27b322594455.png)
 
 > ผู้ใช้สามารถกดปุ่ม clear เพื่อล้างค่าพารามิเตอร์และกราฟทั้งหมดได้
 
