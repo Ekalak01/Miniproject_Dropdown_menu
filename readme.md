@@ -38,6 +38,5 @@
 ![image](https://user-images.githubusercontent.com/87509688/142722784-82a2b41e-bd67-4217-a4da-5f5a7f3e4a0a.png)
 ![image](https://user-images.githubusercontent.com/87509688/142723115-6a31d6e0-8ddd-4a6e-b275-954a6a2a84de.png)
 
-> ### จากการกล่าวถึงโปรเจคข้างต้น ซึ่งผู้อ่านสามารถ โหลดไฟล์ GUI MATLAB ได้ที่ https://github.com/Ekalak01/Miniproject_Dropdown_menu.git 
-> ### และสามารถดูคลิปขั้นตอนและวิธีการใช้งานการอธิบายอย่างละเอียดได้ที่ https://youtu.be/MESQOOBAH0g
+> ### จากการกล่าวถึงโปรเจคข้างต้น ซึ่งผู้อ่านสามารถ โหลดไฟล์ GUI MATLAB ได้ที่ https://github.com/Ekalak01/Miniproject_Dropdown_menu.git และสามารถดูคลิปขั้นตอนและวิธีการใช้งานการอธิบายอย่างละเอียดได้ที่ https://youtu.be/MESQOOBAH0g
 
